@@ -30,7 +30,6 @@ class Weather:
     def get_current_cloud_status(self):
         # print(self.weather.status) #CLOUDS
         # print(self.weather.detailed_status) #DETAILED DESCRIPTION OF CLOUDS
-        print(self.mgr.weather_at_place(self.city))
         return self.weather
 
     #GET MIN-MAX TEMP IN CELSIUS OF THE DAY
