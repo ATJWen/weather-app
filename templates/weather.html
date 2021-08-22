@@ -6,9 +6,37 @@
    <body>
 
       <p><a href="/select_location">Home</a></p>
-    
-      <h1>Clouds in {{ location }} are {{ cloud_status }}!</h1>
-      <h1>Temperature is {{ current_temp }}</h1>
+
+      <div id="curr_weather"></div>
+
+      <!-- scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script type="text/jsx">
+
+      /*** @jsx React.DOM */
+
+      var currentWeather = React.createClass({
+        render: function() {
+          return (
+            <div>
+               <h1>Current weather in {{ location }}</h1>
+               <p>Clouds: {{ cloud_status }}</p>
+               <p>Temperature: {{ current_temp }}&#8451;</p>
+               <p>Feels like: {{ feel_temp }}&#8451;</p>
+               <p>Wind speed: {{ wind_speed }} metres per second</p>
+            </div>
+          );
+        }
+      });
+
+      ReactDOM.render(
+        React.createElement(currentWeather, null),
+        document.getElementById('curr_weather')
+      );
+
+    </script>
       
    </body>
 </html>

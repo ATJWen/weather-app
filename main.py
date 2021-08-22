@@ -1,6 +1,6 @@
 #IMPORTS
 from pyowm.weatherapi25 import location
-from weather_with_wrapper import Weather
+from weather import Weather
 from flask import Flask, render_template, request, redirect, url_for
 
 #-------------------------------------------------
@@ -13,7 +13,9 @@ def print_current_weather(city):
     return render_template('weather.html', 
         location = city, 
         cloud_status = str(w.get_current_cloud_status().detailed_status),
-        current_temp = str(w.get_current_temp_info()['temp'])
+        current_temp = str(w.get_current_temp_info()['temp']),
+        feel_temp = str(w.get_current_temp_info()['feels_like']),
+        wind_speed = str(w.get_current_wind_info()['speed'])
     )
 
 @app.route('/select_location')
