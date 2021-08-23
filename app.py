@@ -15,7 +15,8 @@ def print_current_weather(city):
         cloud_status = str(w.get_current_cloud_status().detailed_status),
         current_temp = str(w.get_current_temp_info()['temp']),
         feel_temp = str(w.get_current_temp_info()['feels_like']),
-        wind_speed = str(w.get_current_wind_info()['speed'])
+        wind_speed = str(w.get_current_wind_info()['speed']),
+        rainfall = str(w.get_current_rain_info())
     )
 
 @app.route('/')

@@ -9,7 +9,10 @@ import json
 #----------------------------------------------------------------------
 #API CREDENTIALS
 load_dotenv(".env")
-owm = OWM(os.getenv('API_KEY'))
+try:
+    owm = OWM(os.getenv('API_KEY'))
+except:
+    print("Unable to connect to OWM")
 
 class Weather:
     def __init__(self,city):
@@ -30,6 +33,7 @@ class Weather:
     def get_current_cloud_status(self):
         # print(self.weather.status) #CLOUDS
         # print(self.weather.detailed_status) #DETAILED DESCRIPTION OF CLOUDS
+        print(self.weather.rain)
         return self.weather
 
     #GET MIN-MAX TEMP IN CELSIUS OF THE DAY
@@ -55,40 +59,40 @@ class Weather:
         rain = self.weather.rain
         if bool(rain):
             # print(rain)
-            return rain
+            return rain['1h'] + "mm"
         else:
             # print("NO RAIN DATA FOR THE PAST HOUR")
             return "NO RAIN DATA FOR THE PAST HOUR"
 
 #---------------------------------------------------------------------
     #FORECASTING
-    def get_forecast_datetime(self):
-        forecast_date = []
-        for daily_weather in self.forecast:
-            # print(formatting.to_ISO8601(daily_weather.ref_time))
-            forecast_date.append(formatting.to_ISO8601(daily_weather.ref_time))
-        return forecast_date
+    # def get_forecast_datetime(self):
+    #     forecast_date = []
+    #     for daily_weather in self.forecast:
+    #         # print(formatting.to_ISO8601(daily_weather.ref_time))
+    #         forecast_date.append(formatting.to_ISO8601(daily_weather.ref_time))
+    #     return forecast_date
 
-    def get_forecast_status(self):
-        for daily_weather in self.forecast:
-            print("STATUS: " + daily_weather.status + ", DETAILED STATUS: " + daily_weather.detailed_status)
+    # def get_forecast_status(self):
+    #     for daily_weather in self.forecast:
+    #         print("STATUS: " + daily_weather.status + ", DETAILED STATUS: " + daily_weather.detailed_status)
 
-    def get_forecast_temp(self):
-        for daily_weather in self.forecast:
-            forecast_temp_celsius = daily_weather.temperature('celsius')
-            print(forecast_temp_celsius['temp'])
+    # def get_forecast_temp(self):
+    #     for daily_weather in self.forecast:
+    #         forecast_temp_celsius = daily_weather.temperature('celsius')
+    #         print(forecast_temp_celsius['temp'])
 
-    def get_forecast_wind(self):
-        for daily_weather in self.forecast:
-            print(daily_weather.wnd['speed'])
+    # def get_forecast_wind(self):
+    #     for daily_weather in self.forecast:
+    #         print(daily_weather.wnd['speed'])
 
-    def get_forecast_rain(self):
-        for daily_weather in self.forecast:
-            if bool(daily_weather.rain):
-                print(daily_weather.rain['3h'])
-            else:
-                print("NO RAIN")
+    # def get_forecast_rain(self):
+    #     for daily_weather in self.forecast:
+    #         if bool(daily_weather.rain):
+    #             print(daily_weather.rain['3h'])
+    #         else:
+    #             print("NO RAIN")
 
-    def get_general_forecast(self):
-        for daily_weather in self.forecast:
-            print(daily_weather.__dict__)
+    # def get_general_forecast(self):
+    #     for daily_weather in self.forecast:
+    #         print(daily_weather.__dict__)

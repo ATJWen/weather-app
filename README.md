@@ -6,8 +6,11 @@
 5) Go to project root and run `pip3 install -r requirements.txt`
 6) Run `python app.py` and go to `localhost:5000`
 
-# TESTS
-1) At the root folder, run `pytest .\tests\test.py`
+# API TESTS
+1) At the root folder, run `pytest .\tests\api_test.py`
+
+# UNIT TESTS
+1) At the root folder, run `python .\tests\unit_test.py`
 
 # WEB APP
 The web app can be found at https://weather-exercise.herokuapp.com/
