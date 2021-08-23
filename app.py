@@ -18,7 +18,7 @@ def print_current_weather(city):
         wind_speed = str(w.get_current_wind_info()['speed'])
     )
 
-@app.route('/select_location')
+@app.route('/')
 def select_location():
     return render_template('index.html')
 
