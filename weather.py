@@ -57,9 +57,9 @@ class Weather:
     #GET CURRENT RAIN AMOUNT (MM)
     def get_current_rain_info(self):
         rain = self.weather.rain
-        if bool(rain):
-            # print(rain)
-            return rain['1h'] + "mm"
+        if rain:
+            print(rain)
+            return str(rain['1h']) + "mm"
         else:
             # print("NO RAIN DATA FOR THE PAST HOUR")
             return "NO RAIN DATA FOR THE PAST HOUR"
