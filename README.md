@@ -14,3 +14,5 @@
 
 # WEB APP
 The web app can be found at https://weather-exercise.herokuapp.com/
+
+Thanks
